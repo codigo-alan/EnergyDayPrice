@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">EnergyDayPrice</string>
+    <string name="info_et">Esto será el hint</string>
+    <string name="btn_view">View</string>
+    <string name="title_day">Date:</string>
+    <string name="title_hour">Hours range:</string>
+    <string name="title_price">Price:</string>
+    <string name="title_expensive">Expensive hour</string>
+    <string name="title_cheapest">Cheapest hour</string>
+</resources>
