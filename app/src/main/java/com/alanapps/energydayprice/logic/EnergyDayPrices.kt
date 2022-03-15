@@ -1,6 +1,9 @@
 package com.alanapps.energydayprice.logic
 
-class EnergyDayPrices(val mapOfPrices: Map<String, HourRange>) {
+import kotlinx.serialization.Serializable
+
+@Serializable
+class EnergyDayPrices(val mapOfPrices: HashMap<String, HourRange>) {
 
     fun findByHour(hourKey: String): HourRange? {
         for (k in mapOfPrices.keys) {
@@ -30,11 +33,11 @@ class EnergyDayPrices(val mapOfPrices: Map<String, HourRange>) {
         return mapOfPrices[keyOfMin]
     }
 
-    //TODO (complete this function)
-    /*fun allRanges(): List<HourRange> {
+    fun listOfRanges(): List<HourRange> {
         val listOfRange = mutableListOf<HourRange>()
-        for ()
-    }*/
+        for (range in mapOfPrices) listOfRange += range.value
+        return listOfRange
+    }
 
 
 }

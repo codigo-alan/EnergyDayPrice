@@ -1,7 +1,8 @@
 package com.alanapps.energydayprice
-
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.alanapps.energydayprice.client.GetFromClient
 import com.alanapps.energydayprice.logic.EnergyDayPrices
 import com.alanapps.energydayprice.logic.HourRange
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         showExpensive()
     }
 
-    private fun getFromClient(): Map<String,HourRange>{
+    private fun getFromClient(): HashMap<String,HourRange>{
         return runBlocking {
             GetFromClient().loadFromApi()
         }
@@ -37,5 +38,13 @@ class MainActivity : AppCompatActivity() {
         txt_price_expensive.text = hourRange!!.price.toString() + " ${hourRange!!.units}"
         txt_day_expensive.text = hourRange!!.date
         txt_hour_expensive.text = hourRange!!.hour
+    }
+
+    fun completeDay(view: View){
+        val completeDay = Intent(this,AllRanges::class.java)
+        /*val bundle = Bundle().putSerializable("energyPrices",energyDayPrices)
+        completeDay.putExtra(bundle)*/
+        //TODO (no encuentra que sea serializable la variable energyDayPrices)
+        startActivity(completeDay)
     }
 }
