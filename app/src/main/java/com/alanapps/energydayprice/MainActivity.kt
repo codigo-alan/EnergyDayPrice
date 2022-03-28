@@ -8,6 +8,10 @@ import com.alanapps.energydayprice.logic.EnergyDayPrices
 import com.alanapps.energydayprice.logic.HourRange
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.runBlocking
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.encodeToString
+
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -41,10 +45,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun completeDay(view: View){
+        val listAllRanges = energyDayPrices.listOfRanges()
+        val jsonList = Json.encodeToString(listAllRanges)
+
         val completeDay = Intent(this,AllRanges::class.java)
-        /*val bundle = Bundle().putSerializable("energyPrices",energyDayPrices)
-        completeDay.putExtra(bundle)*/
-        //TODO (no encuentra que sea serializable la variable energyDayPrices)
+        completeDay.putExtra("keyOfList",jsonList)
         startActivity(completeDay)
     }
 }
